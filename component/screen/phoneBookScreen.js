@@ -1,3 +1,4 @@
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 import React, { Component } from 'react';
 import {FlatList, Text, View,StyleSheet} from "react-native";
 import data from '../../data/datauser';
@@ -10,8 +11,11 @@ class PhoneBookScreen extends Component {
         );
     }
 
+    navigateDetail = (item) => {
+        this.props.navigation.navigate('Detail', {item});
+    }
+
     render() {
-        //console.log('data', data);
         return (
             <View style={mstyle.title}>
                 <View style={mstyle.container}>
@@ -19,14 +23,10 @@ class PhoneBookScreen extends Component {
                         style={{flex: 1}}
                         data={data}
                         renderItem={({item}) =>
-                            (<View>
-                                <GetDataUser
-                                    fulname = {item.fulname}
-                                    phonenumber = {item.phonenumber}
-                                    avatarURL = {item.avatarURL}
-                                />
-                                <Text onPress={() => this.props.navigation.navigate('Detail')} />
-                            </View>)
+                            (<GetDataUser
+                                item={item}
+                                getDataToPhoneBook = {this.navigateDetail}
+                            />)
                         }
                         keyExtractor={(item) => item.key}
                         ItemSeparatorComponent={this.separator}
@@ -40,21 +40,19 @@ export default PhoneBookScreen;
 
 const mstyle = StyleSheet.create({
     title: {
-        alignItems: 'center',
-        justifyContent: 'center',
         flex: 1,
     },
 
     container: {
-        height: 550,
+        height: 490,
         width: '100%',
-        marginTop: 10,
+        marginTop: 12,
     },
 
     separator: {
         height: 0.5,
         width: '100%',
         backgroundColor: '#22182c',
-        marginTop: 50,
+        marginTop: 4,
     },
 });

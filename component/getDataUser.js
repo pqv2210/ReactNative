@@ -1,59 +1,69 @@
-import React, { Component } from 'react';
-import {Text, Image, StyleSheet, View} from "react-native";
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+import React, {Component} from 'react';
+import {Text, Image, StyleSheet, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 
 class GetDataUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            itemkey: '',
             fulname: '',
             phonenumber: '',
             avatarURL: '',
         };
     }
 
+    getDataToPhoneBook = () => {
+        this.props.getDataToPhoneBook(this.props.item);
+    }
+
     render() {
         return (
-            <View style={mstyle.containersmall}>
-                <Text style={mstyle.itemname}>{this.props.fulname}</Text>
-                <Text style={mstyle.itemphone}>{this.props.phonenumber}</Text>
-                <Image source={{uri: this.props.avatarURL}} style={mstyle.itemavatar}/>
-            </View>
+            <TouchableOpacity
+                style={mstyle.container}
+                onPress= {this.getDataToPhoneBook}
+            >
+                <Image
+                    source={{uri: this.props.item.avatarURL}}
+                    style={mstyle.imageitem}
+                />
+                <TouchableOpacity style={mstyle.textitem}>
+                    <Text>{this.props.item.fulname}</Text>
+                    <Text>{this.props.item.phonenumber}</Text>
+                </TouchableOpacity>
+            </TouchableOpacity>
         );
     }
 }
 
-GetDataUser.propTypes = {
-    fulname: PropTypes.string.isRequired,
-    phonenumber: PropTypes.string.isRequired,
-    avatarURL: PropTypes.string.isRequired,
-};
+// GetDataUser.propTypes = {
+//     fulname: PropTypes.string.isRequired,
+//     phonenumber: PropTypes.string.isRequired,
+//     avatarURL: PropTypes.string.isRequired,
+//     itemkey: PropTypes.string.isRequired,
+// };
 
 export default GetDataUser;
 
 const mstyle = StyleSheet.create({
-    containersmall: {
-        marginLeft: 80,
+    container: {
         width: '100%',
-        height: 40,
-        flexDirection: 'column',
+        height: 45,
+        flexDirection: 'row',
+        zIndex: 0,
     },
 
-    itemname: {
-        fontSize: 20,
-        color: '#79378B',
-        marginTop: 20,
+    imageitem: {
+        height: 45,
+        width: 45,
+        marginLeft: 10,
     },
 
-    itemphone: {
-        fontSize: 18,
+    textitem: {
+        fontSize: 30,
         color: '#382BF1',
-    },
-
-    itemavatar: {
-        height: 50,
-        width: 50,
-        marginLeft: -65,
-        marginTop: -50,
+        marginLeft: 7,
+        alignContent: 'center',
     },
 });

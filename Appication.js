@@ -2,13 +2,31 @@
 import React, {Component} from 'react';
 import PhoneBookScreen from "./component/screen/phoneBookScreen";
 import DetailsScreen from "./component/screen/detailScreen";
-import {createAppContainer, createStackNavigator} from "react-navigation";
+import AppDrawerNavigation from "./component/screen/AppDrawerNavigation";
+import {
+    createDrawerNavigator,
+    createAppContainer,
+    createStackNavigator,
+    createBottomTabNavigator
+} from "react-navigation";
+import { StatusBar } from 'react-native';
 
-const MainNavigator = createStackNavigator({
-    PhoneBook: PhoneBookScreen,
+StatusBar.setHidden(true);
+
+const PhoneBookNavigation = createBottomTabNavigator({
+    PhoneBookTab: PhoneBookScreen,
+});
+
+const StackNavigation = createStackNavigator({
+    PhoneBook: PhoneBookNavigation,
     Detail: DetailsScreen,
 });
 
-const Application = createAppContainer(MainNavigator);
+const DrawerNavigation = createDrawerNavigator({
+    PhoneBookDrawer: StackNavigation,
+    AppDrawer: AppDrawerNavigation,
+});
+
+const Application = createAppContainer(DrawerNavigation);
 
 export default Application;
