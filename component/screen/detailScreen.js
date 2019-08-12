@@ -1,6 +1,6 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 class DetailsScreen extends Component {
     static navigationOptions = {title: 'Chi tiet'}
@@ -22,6 +22,9 @@ class DetailsScreen extends Component {
     render() {
         return (
             <View style={mstyle.container1}>
+                <TouchableOpacity onPress={this.props.navigation.openDrawer}>
+                    <Text>Open Drawer</Text>
+                </TouchableOpacity>
                 <Text>{this.state.item.fulname}</Text>
                 <Text>{this.state.item.phonenumber}</Text>
             </View>
