@@ -22,9 +22,6 @@ class DetailsScreen extends Component {
     render() {
         return (
             <View style={mstyle.container1}>
-                <TouchableOpacity onPress={this.props.navigation.openDrawer}>
-                    <Text>Open Drawer</Text>
-                </TouchableOpacity>
                 <Text>{this.state.item.fulname}</Text>
                 <Text>{this.state.item.phonenumber}</Text>
             </View>

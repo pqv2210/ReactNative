@@ -1,19 +1,18 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 import React, {Component} from 'react';
-import PhoneBookScreen from "./component/screen/phoneBookScreen";
-import DetailsScreen from "./component/screen/detailScreen";
+import PhoneBookScreen from './component/screen/phoneBookScreen';
+import DetailsScreen from './component/screen/detailScreen';
+import AddContactScreen from './component/screen/AddContactScreen';
 import {
     createDrawerNavigator,
     createAppContainer,
     createStackNavigator,
-    createBottomTabNavigator
-} from "react-navigation";
-import { StatusBar } from 'react-native';
-
-StatusBar.setHidden(true);
+    createBottomTabNavigator,
+} from 'react-navigation';
 
 const PhoneBookNavigation = createBottomTabNavigator({
     PhoneBookTab: PhoneBookScreen,
+    AddContacTab: AddContactScreen,
 });
 
 const StackNavigation = createStackNavigator({

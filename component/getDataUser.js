@@ -1,7 +1,6 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 import React, {Component} from 'react';
 import {Text, Image, StyleSheet, View, TouchableOpacity} from 'react-native';
-import PropTypes from 'prop-types';
 
 class GetDataUser extends Component {
     constructor(props) {
@@ -36,13 +35,6 @@ class GetDataUser extends Component {
         );
     }
 }
-
-// GetDataUser.propTypes = {
-//     fulname: PropTypes.string.isRequired,
-//     phonenumber: PropTypes.string.isRequired,
-//     avatarURL: PropTypes.string.isRequired,
-//     itemkey: PropTypes.string.isRequired,
-// };
 
 export default GetDataUser;
 
