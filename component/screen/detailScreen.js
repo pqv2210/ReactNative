@@ -1,9 +1,9 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
 class DetailsScreen extends Component {
-    static navigationOptions = {title: 'Chi tiet'}
+    static navigationOptions = {title: 'Details'}
 
     constructor(props){
         super(props)
@@ -22,8 +22,10 @@ class DetailsScreen extends Component {
     render() {
         return (
             <View style={mstyle.container1}>
+                <Image source={{uri: this.state.item.avatarURL}} style={mstyle.avatar}/>
                 <Text>{this.state.item.fulname}</Text>
                 <Text>{this.state.item.phonenumber}</Text>
+                <Text>{this.state.item.email}</Text>
             </View>
         );
     }

@@ -5,6 +5,7 @@ import data from '../../data/datauser';
 import GetDataUser from '../getDataUser';
 
 class PhoneBookScreen extends Component {
+    static navigationOptions = {title: 'Phone Book'}
     separator = () => {
         return(
             <View style={mstyle.separator}></View>

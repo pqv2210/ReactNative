@@ -11,17 +11,17 @@ import {
 } from 'react-navigation';
 
 const PhoneBookNavigation = createBottomTabNavigator({
-    PhoneBookTab: PhoneBookScreen,
-    AddContacTab: AddContactScreen,
+    'Phone Book Tab': PhoneBookScreen,
+    'Add Contact Tab': AddContactScreen,
 });
 
 const StackNavigation = createStackNavigator({
-    PhoneBook: PhoneBookNavigation,
-    Detail: DetailsScreen,
+    'Phone Book': PhoneBookNavigation,
+    'Detail': DetailsScreen,
 });
 
 const DrawerNavigation = createDrawerNavigator({
-    PhoneBookDrawer: StackNavigation,
+    'Phone Book Drawer': StackNavigation,
 });
 
 const Application = createAppContainer(DrawerNavigation);
