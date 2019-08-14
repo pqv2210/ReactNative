@@ -5,17 +5,17 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 class DetailsScreen extends Component {
     static navigationOptions = {title: 'Details'}
 
-    constructor(props){
+    constructor(props) {
         super(props)
         console.log(this.props);
-        this.state={
-             item: {},
+        this.state = {
+            item: {},
         };
     }
 
     componentDidMount() {
         console.log('data', this.props.navigation.getParam('item', 'NO-ID'));
-        const item = this.props.navigation.getParam('item', 'NO-ID')
+        const item = this.props.navigation.getParam('item', 'NO-ID');
         this.setState({item});
     }
 

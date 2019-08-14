@@ -2,7 +2,8 @@
 import React, {Component} from 'react';
 import PhoneBookScreen from './component/screen/phoneBookScreen';
 import DetailsScreen from './component/screen/detailScreen';
-import AddContactScreen from './component/screen/AddContactScreen';
+import AddContactScreen from './component/screen/addContactScreen';
+import AddContact from './component/screen/addContact';
 import {
     createDrawerNavigator,
     createAppContainer,
@@ -18,6 +19,7 @@ const PhoneBookNavigation = createBottomTabNavigator({
 const StackNavigation = createStackNavigator({
     'Phone Book': PhoneBookNavigation,
     'Detail': DetailsScreen,
+    'Add Contact': AddContact,
 });
 
 const DrawerNavigation = createDrawerNavigator({

@@ -6,10 +6,7 @@ class GetDataUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemkey: '',
-            fulname: '',
-            phonenumber: '',
-            avatarURL: '',
+            item: {},
         };
     }
 

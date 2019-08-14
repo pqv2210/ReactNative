@@ -2,28 +2,57 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native';
 
-class AddContactScreen extends Component {
-    static navigationOptions = {title: 'Add Contact'}
-    touchOK = () => {
+const item = [{
+    fulname: '',
+    phonenumber: '',
+    email: '',
+}];
 
+class AddContact extends Component {
+    static navigationOptions = {title: 'Add Contact'}
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            item,
+        };
+    }
+
+    touchOK = () => {
+        console.log(item);
     }
 
     render() {
         return (
             <View style={mstyle.container}>
-                <View style={mstyle.browseImage} />
+                <View style={mstyle.browseImage}/>
                 <View style={mstyle.haflcontainer}>
-                    <Text style={mstyle.text}>Name:</Text>
-                    <TextInput style={mstyle.textinput}/>
-                    <Text style={mstyle.text}>Phone:</Text>
-                    <TextInput style={mstyle.textinput}/>
-                    <Text style={mstyle.text}>Gmail:</Text>
-                    <TextInput style={mstyle.textinput}/>
+                    <Text style={mstyle.text} >Name:</Text>
+                    <TextInput
+                        style={mstyle.textinput}
+                        ref='fulname'
+                        onChangeText={(fulname) => this.setState({fulname})}
+                        value={this.state.fulname}
+                    />
+                    <Text style={mstyle.text} >Phone:</Text>
+                    <TextInput
+                        style={mstyle.textinput}
+                        ref='phonenumber'
+                        onChangeText={(phonenumber) => this.setState({phonenumber})}
+                        value={this.state.phonenumber}
+                    />
+                    <Text style={mstyle.text} >Gmail:</Text>
+                    <TextInput
+                        style={mstyle.textinput}
+                        ref='email'
+                        onChangeText={(email) => this.setState({email})}
+                        value={this.state.email}
+                    />
                 </View>
                 <View style={mstyle.button}>
                     <TouchableOpacity
                         style={mstyle.touchOK}
-                        onPress={this.touchOK()}
+                        onPress={this.touchOK}
                     >
                         <Text style={mstyle.textOK}>OK</Text>
                     </TouchableOpacity>
@@ -32,7 +61,7 @@ class AddContactScreen extends Component {
         );
     }
 }
-export default AddContactScreen;
+export default AddContact;
 
 const mstyle = StyleSheet.create({
     container: {
@@ -42,16 +71,16 @@ const mstyle = StyleSheet.create({
         marginTop: '10%',
         marginLeft: '10%',
     },
-    browseImage:{
+    browseImage: {
         height: '35%',
         width: '100%',
     },
-    haflcontainer:{
+    haflcontainer: {
         height: '50%',
         width: '100%',
         flexDirection: 'column',
     },
-    text:{
+    text: {
         fontSize: 20,
         marginLeft: '10%',
     },
@@ -77,5 +106,5 @@ const mstyle = StyleSheet.create({
     textOK: {
         alignItems: 'center',
         fontSize: 20,
-    }
+    },
 });
