@@ -4,6 +4,7 @@ import PhoneBookScreen from './component/screen/phoneBookScreen';
 import DetailsScreen from './component/screen/detailScreen';
 import AddContactScreen from './component/screen/addContactScreen';
 import AddContact from './component/screen/addContact';
+import DrawerMenu from './component/screen/DrawerMenu';
 import {
     createDrawerNavigator,
     createAppContainer,
@@ -11,19 +12,35 @@ import {
     createBottomTabNavigator,
 } from 'react-navigation';
 
-const PhoneBookNavigation = createBottomTabNavigator({
-    'Phone Book Tab': PhoneBookScreen,
-    'Add Contact Tab': AddContactScreen,
+const AppNavigation = createBottomTabNavigator({
+    PhoneBookTab: {
+        screen: PhoneBookScreen,
+        navigationOptions: {
+            title: 'Phone Book',
+        },
+    },
+    AddContactTab: AddContactScreen,
 });
 
 const StackNavigation = createStackNavigator({
-    'Phone Book': PhoneBookNavigation,
-    'Detail': DetailsScreen,
-    'Add Contact': AddContact,
+    PhoneBookTab: {
+        screen: AppNavigation,
+        navigationOptions: {
+            title: 'Phone Book',
+            header: null,
+        },
+    },
+    DetailStack: DetailsScreen,
+    AddContactStack: AddContact,
 });
 
 const DrawerNavigation = createDrawerNavigator({
-    'Phone Book Drawer': StackNavigation,
+    PhoneBookDrawer: {
+        screen: StackNavigation,
+    },
+},
+{
+    contentComponent: DrawerMenu,
 });
 
 const Application = createAppContainer(DrawerNavigation);
